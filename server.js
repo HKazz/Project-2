@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 require('dotenv').config()
 const mongoose = require("mongoose")
+const authController = require('./Controllers/auth')
 
 console.log('dev branch')
 
@@ -32,10 +33,17 @@ mongoose.connect(process.env.MONGODB_URI)
 // =======================
 // 4. ROUTES
 // =======================
+app.get('/', (req,res)=>{
+    res.render('index.ejs')
+})
+
 
 // =======================
 // 5. LISTENING ON PORT 3000
 // =======================
+app.use('/auth', authController)
+
+
 app.listen(3000, () => {
     console.log('Listening on port 3000');
   });
