@@ -8,6 +8,8 @@ const morgan = require("morgan");
 require('dotenv').config()
 const mongoose = require("mongoose")
 const authController = require('./Controllers/auth')
+const isSignedIn = require('./middleware/is-signed-in')
+const passUserToView = require('./middleware/pass-user-to-view')
 
 console.log('dev branch')
 
@@ -18,6 +20,7 @@ console.log('dev branch')
 app.use(express.urlencoded({ extended: false })); // parses the request body. Needed for the req.body
 app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
+app.use(passUserToView)
 
 
 // =======================
@@ -42,6 +45,7 @@ app.get('/', (req,res)=>{
 // 5. LISTENING ON PORT 3000
 // =======================
 app.use('/auth', authController)
+app.use(isSignedIn)
 
 
 app.listen(3000, () => {
