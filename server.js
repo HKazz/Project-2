@@ -3,6 +3,7 @@
 // =======================
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 require('dotenv').config()
@@ -20,7 +21,15 @@ console.log('dev branch')
 app.use(express.urlencoded({ extended: false })); // parses the request body. Needed for the req.body
 app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
-app.use(passUserToView)
+
+
+
+
+
+
+
+
+
 
 
 // =======================
@@ -31,20 +40,34 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch(()=>{console.log("ERROR CONNECTING TO DB OMAR")})
 
 
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
 
+
+  app.use(passUserToView)
 
 // =======================
 // 4. ROUTES
 // =======================
 app.get('/', (req,res)=>{
-    res.render('index.ejs')
+    // console.log(req.session.user)
+    res.render('index.ejs', {user: req.session.user})
 })
 
+app.get('/books', (req,res)=>{
+    res.render('./books/books.ejs', {user: req.session.user})
+})
 
 // =======================
 // 5. LISTENING ON PORT 3000
 // =======================
 app.use('/auth', authController)
+
 app.use(isSignedIn)
 
 

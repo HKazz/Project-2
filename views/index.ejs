@@ -7,8 +7,15 @@
   </head>
   <body>
     <h1>Book Buddy</h1>
+    <% if (user) { %>
+    <!-- Check if user exists -->
+    <h2>Welcome, <%= user.username %></h2>
+    <a href="./books/books.ejs">Your Books</a>
+    <a href="/auth/sign-out">Sign Out</a>
+    <% } else { %>
     <p>A booklist tracker application.</p>
-    <a href="./auth/sign-up">Sign Up</a>
-    <a href="./auth/sign-in">Sign In</a>
+    <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/sign-in">Sign In</a>
+    <% } %>
   </body>
 </html>
