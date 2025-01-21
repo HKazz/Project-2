@@ -15,8 +15,9 @@ const BookSchema = mongoose.Schema(
             ref:"User",
             required: true,
         },
+    },{
         timestamps: true
-    },
+    }
 )
 
 const Book = mongoose.model('Book', BookSchema)

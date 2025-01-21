@@ -5,7 +5,11 @@ router.get('/', async(req,res)=>{
     try {
         const books = await Book.find({creator: req.session.user._id})
         res.render('books/index.ejs', {user: req.session.user, Book: books})
-=======
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 router.get('/new', (req,res)=>{
     res.render('books/new.ejs', {user: req.session.user})
 })
@@ -21,3 +25,4 @@ router.post('/', async (req,res)=>{
         console.log(error)
     }
 })
+module.exports = router
