@@ -9,7 +9,12 @@ const BookSchema = mongoose.Schema(
         author: {
             type: String,
             default: 'Unknown'
-        }
+        },
+        creator:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"User",
+            required: true,
+        },
     },{
         timestamps: true
     }
