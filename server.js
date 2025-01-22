@@ -21,7 +21,8 @@ console.log('dev branch')
 app.use(express.urlencoded({ extended: false })); // parses the request body. Needed for the req.body
 app.use(methodOverride("_method")); // Will change the methods for
 app.use(morgan("dev")); // Logs the requests in the terminal
-
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
 
 
 
@@ -54,6 +55,8 @@ app.use(
 // =======================
 // 4. ROUTES
 // =======================
+
+
 app.get('/', (req,res)=>{
     // console.log(req.session.user)
     res.render('index.ejs', {user: req.session.user})
