@@ -25,5 +25,19 @@ router.post('/', async (req,res)=>{
         console.log(error)
     }
 })
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedBook = await Books.findByIdAndUpdate(
+            req.params.id,
+            { status: req.body.status },
+            { new: true }
+        );
+        res.redirect('/books')
+    } catch (error) {
+        console.log(error);
+        res.redirect('/books')
+    }
+})
+
 
 module.exports = router
