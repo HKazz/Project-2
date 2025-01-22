@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
-const User = require('../models/users')
+const session = require('express-session')
+const User = require('../models/Users')
 
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs');
