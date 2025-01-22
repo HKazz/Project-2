@@ -13,7 +13,6 @@ const isSignedIn = require('./middleware/is-signed-in')
 const passUserToView = require('./middleware/pass-user-to-view')
 const bookController = require('./Controllers/books')
 const listController = require('./Controllers/list.route')
-console.log('dev branch')
 
 
 // =======================

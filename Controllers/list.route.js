@@ -31,12 +31,13 @@ router.post('/', async (req,res)=>{
     }
 })
 
-router.get('/:listName', (req,res)=>{
+router.get('/:listName', async (req,res)=>{
     try {
-        
+        const foundList = await Lists.findOne({listName: req.params.listName}).populate("books")
+        console.log(foundList)
+        res.render("lists/selectedList.ejs",{list:foundList})
     } catch (error) {
         console.log(error)
-        res.redirect('/')
     }
 })
 

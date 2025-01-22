@@ -11,11 +11,11 @@ const ListSchema = mongoose.Schema(
             ref: "User",
             required: true,
         },
-        books:{
+        books:[{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Book",
             required: false
-        }
+        }]
     }
 )
 
