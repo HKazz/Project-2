@@ -14,8 +14,13 @@ const BookSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref:"User",
             required: true,
+        },  status: {
+            type: String,
+            enum: ['to-read', 'reading', 'finished'],
+            default: 'to-read'
         },
-    },{
+    },
+    {
         timestamps: true
     }
 )
