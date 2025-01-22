@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists</title>
+</head>
+<body>
+    <h1>Your Lists</h1>
+    <% lists.forEach(list => { %>
+        <div>
+            <ol><a href="#"><h3><%= list.listName %></h3></a></ol>
+        </div>
+    <% })%>
+    <a href="/lists/new"><button type="submit">Create list</button></a>
+</body>
+</html>

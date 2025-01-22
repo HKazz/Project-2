@@ -12,6 +12,7 @@ const authController = require('./Controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
 const passUserToView = require('./middleware/pass-user-to-view')
 const bookController = require('./Controllers/books')
+const listController = require('./Controllers/list.route')
 console.log('dev branch')
 
 
@@ -73,7 +74,7 @@ app.use('/auth', authController)
 
 app.use(isSignedIn)
 app.use("/books",bookController)
-
+app.use("/lists",listController)
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
