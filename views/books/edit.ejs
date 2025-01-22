@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Book Status</title>
+</head>
+<body>
+    <h1>Edit Book Status</h1>
+
+    <form action="/books/<%= book._id %>" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="to-read" <%= book.status === 'to-read' ? 'selected' : '' %>>To Read</option>
+            <option value="reading" <%= book.status === 'reading' ? 'selected' : '' %>>Reading</option>
+            <option value="finished" <%= book.status === 'finished' ? 'selected' : '' %>>Finished</option>
+        </select>
+
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>
