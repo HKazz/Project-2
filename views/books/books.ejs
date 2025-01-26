@@ -6,6 +6,8 @@
     <title>Books</title>
 </head>
 <body>
+    <%- include('./../partials/_navbar.ejs') %>
+
     <h1>Your Books</h1>
     <a href="/books/new">Add New Book</a>
     <% books.forEach(book => { %>

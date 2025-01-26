@@ -6,11 +6,12 @@
     <title>Books</title>
 </head>
 <body>
+    <%- include('./../partials/_navbar.ejs') %>
     <h1>Your Books</h1>
     <h2>Here is a list of all your books</h2>
     <br>
     <ul>
-    <% Book.forEach(book =>{%>
+    <% books.forEach(book =>{%>
         <li><%= book.bookName%> by <%= book.author%></li>
     <%})%>
     </ul>

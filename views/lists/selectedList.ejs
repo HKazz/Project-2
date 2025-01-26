@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= list.listName %></title>
+</head>
+<body>
+    <%- include('./../partials/_navbar.ejs') %>
+    <h1><%= list.listName%></h1>
+    <% list.books.forEach(book => { %>
+    <ol><%= book.bookName%> by <%=book.author%>. status: <%= book.status%></ol>
+    <%})%>
+
+    <a href="#"><button type="submit">Add Book</button></a>
+    <a href="/lists/update/<%= list._id%>"><button type="submit">Update List</button></a>
+    <form action="/lists/delete/<%= list._id%>?_method=DELETE" method="POST">
+    <button type="submit">Delete List</button>
+    </form>
+</body>
+</html>
