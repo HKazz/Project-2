@@ -7,10 +7,18 @@
 </head>
 <body>
     <h1>New List</h1>
+    <% if(list){%>
+        <form action="/lists" method="POST">
+            <label for="listName">List Name</label>
+            <input value="<%= list.listName%>" type="text"  name="listName" id="listName">
+            <button type="submit">Add List</button>
+        </form>
+    <% } else{%>
     <form action="/lists" method="POST">
         <label for="listName">List Name</label>
         <input type="text"  name="listName" id="listName">
         <button type="submit">Add List</button>
     </form>
+    <%}%>
 </body>
 </html>

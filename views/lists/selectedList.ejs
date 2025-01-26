@@ -6,6 +6,14 @@
     <title><%= list.listName %></title>
 </head>
 <body>
+    <%- include('./../partials/_navbar.ejs') %>
     <h1><%= list.listName%></h1>
+    <% list.books.forEach(book => { %>
+    <ol><%= book.bookName%> by <%=book.author%>. status: <%= book.status%></ol>
+    <%})%>
+
+    <a href="#"><button type="submit">Add Book</button></a>
+    <a href="/lists/update/<%= list._id%>"><button type="submit">Update List</button></a>
+    <a href=""><button type="submit">Delete List</button></a>
 </body>
 </html>

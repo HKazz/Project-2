@@ -4,7 +4,7 @@ const Lists = require('../models/lists')
 router.get('/', async (req,res)=>{ 
     try {
         const lists = await Lists.find({ creator: req.session.user._id })
-        res.render('lists/index', { lists, user: req.session.user })
+        res.render('lists/index.ejs', { lists, user: req.session.user })
     } catch (error) {
         console.log(error)
         res.redirect('/')
@@ -41,4 +41,20 @@ router.get('/:listName', async (req,res)=>{
     }
 })
 
+router.get('/update/:listId', async (req,res) =>{
+    try {
+        const selectedList = await Lists.findById(req.params.listId)
+        console.log(selectedList)
+        res.render("lists/update.ejs", {list: selectedList})
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
+router.put("/:listId",async(req,res)=>{
+    console.log("Update route")
+    await Lists.findByIdAndUpdate(req.params.listId,req.body)
+    res.redirect("/lists")
+})
 module.exports = router
