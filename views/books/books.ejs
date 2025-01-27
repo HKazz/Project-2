@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <%- include('./../partials/_navbar.ejs') %>
+
+    <h1>Your Books</h1>
+    <a href="/books/new">Add New Book</a>
+    <% books.forEach(book => { %>
+        <div>
+            <h3><%= book.bookName %></h3>
+            <p>Author: <%= book.author %></p>
+            <p>Status: <%= book.status %></p>
+            <form action="/books/<%= book._id %>?_method=PUT" method="POST">
+                <select name="status">
+                    <option value="to-read" <%= book.status === 'to-read' ? 'selected' : '' %>>To Read</option>
+                    <option value="reading" <%= book.status === 'reading' ? 'selected' : '' %>>Reading</option>
+                    <option value="finished" <%= book.status === 'finished' ? 'selected' : '' %>>Finished</option>
+                </select>
+                <button type="submit">Change Status</button>
+            </form>
+        </div>
+    <% }) %>
+    
+</body>
+</html>

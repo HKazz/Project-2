@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Buddy</title>
+  </head>
+  <body>
+    <h1>Book Buddy</h1>
+    <% if (user) { %>
+    <!-- Check if user exists -->
+    <h2>Welcome, <%= user.username %></h2>
+    <a href="/books">Your Books</a>
+    <a href="/lists">Your Lists</a>
+    <a href="/auth/sign-out">Sign Out</a>
+    <% } else { %>
+    <p>A booklist tracker application.</p>
+    <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/sign-in">Sign In</a>
+    <% } %>
+  </body>
+</html>
