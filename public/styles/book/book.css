@@ -1,0 +1,13 @@
+body{
+    background-color: #F2E3D5;
+    color: #333333;
+}
+
+.button{
+    background-color: #F4C95D;
+    border-radius: 10px;
+}
+
+.button:hover{
+    background-color: #8BA870;
+}
