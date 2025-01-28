@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const BookSchema = mongoose.Schema(
+const BookSchema = new mongoose.Schema(
     {
         bookName: {
             type: String,
@@ -19,6 +19,10 @@ const BookSchema = mongoose.Schema(
             enum: ['to-read', 'reading', 'finished'],
             default: 'to-read'
         },
+        selected:{
+            type: Boolean,
+            default: false,
+        }
     },
     {
         timestamps: true
