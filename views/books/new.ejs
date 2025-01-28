@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Book</title>
+    <link rel="stylesheet" href="/styles/book/book.css">
 </head>
 <body>
+    <nav><%- include('./../partials/_navbar.ejs') %></nav>
     <h1>New Book</h1>
     <form action="/books" method="POST">
         <label for="bookName">Book Name</label>
         <input type="text" name="bookName" id="book-name" />
         <label for="author">Author</label>
         <input type="text" name="author" id="author">
-        <button type="submit">Add Book</button>
+        <button class="new-book" type="submit">Add Book</button>
     </form>
 </body>
 </html>
