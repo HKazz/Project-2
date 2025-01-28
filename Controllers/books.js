@@ -2,29 +2,15 @@ const router = require("express").Router()
 const Books = require('../models/books')
 
 
-// route no longer necessary....will remove later
-// router.get('/', async (req,res)=>{ 
-//     try {
-//         const books = await Books.find({ creator: req.session.user._id })
-//         res.render('books/index.ejs', { books, user: req.session.user })
-//     } catch (error) {
-//         console.log(error)
-//         res.redirect('/')
-//     }
-// })
-
-
-// replacement route
 router.get('/', async (req,res)=>{ 
     try {
         const books = await Books.find({ creator: req.session.user._id })
-        res.render('books/books.ejs', { books, user: req.session.user })
+        res.render('books/books', { books, user: req.session.user })
     } catch (error) {
         console.log(error)
         res.redirect('/')
     }
 })
-
 router.get('/new', (req,res)=>{
     res.render('books/new.ejs', {user: req.session.user})
 })
@@ -52,6 +38,14 @@ router.put('/:id', async (req, res) => {
         res.redirect('/books')
     }
 })
-
+router.delete('/:id', async (req, res) => {
+    try {
+        await Books.findByIdAndDelete(req.params.id)
+        res.redirect('/books')
+    } catch (error) {
+        console.log("Error deleting book:", error)
+        res.redirect('/books')
+    }
+})
 
 module.exports = router
