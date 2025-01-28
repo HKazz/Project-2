@@ -25,8 +25,7 @@
   <h2>Books You May Like to Add</h2>
   <form action="/lists/<%= list.listName %>/add-books" method="POST">
     <ol>
-      <% books.forEach(book => { %>
-        <li>
+        <% books.filter(book => !list.books.some(b => b.equals(book._id))).forEach(book => { %>        <li>
           <h3><%= book.bookName %></h3>
           <p>Author: <%= book.author %></p>
           <input type="checkbox" name="bookIds" value="<%= book._id %>">
