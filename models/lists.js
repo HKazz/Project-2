@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ListSchema = mongoose.Schema(
+const ListSchema = new mongoose.Schema(
     {
         listName:{
             type: String,
@@ -15,7 +15,7 @@ const ListSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Book",
             required: false
-        }]
+        }],
     }
 )
 
