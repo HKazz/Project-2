@@ -105,63 +105,6 @@ router.delete("/delete/:listId", async (req, res) => {
   }
 });
 
-// router.delete('/delete/:listName/:bookId', async (req,res) =>{
-//   try {
-//     const {listName} = req.params;
-//     const {bookId} = req.body;
-//     const list = await Lists.findOne({listName})
-//     console.log(list)
-//     if(!Array.isArray(bookIds)){
-//       list.books.remove(bookIds)
-//       await list.save()
-//       return res.redirect(`/lists/${req.params.listName}`)
-//     }
-//     bookIds.forEach(bookId =>{
-//       if(!list.books.includes(bookId)){
-//         list.books.remove(bookId)
-        
-//       }
-//     })
-//     await list.save()
-//     res.redirect(`/lists/${listName}`)
-
-//   } catch (error) {
-//     console.log(error)
-//   }
-// });
-
-
-// router.post('/:listId/delete-selected', async (req,res)=>{
-//   try {
-//     const {listId} = req.params;
-//     const {bookIds} = req.body;
-
-//     if(!mongoose.Types.ObjectId.isValid(listId)){
-//       console.log("Invalid List ID")
-//       return res.redirect('/lists')
-//     }
-
-//     const list = await Lists.findById(listId);
-
-//     if(!list){
-//       console.log('List not found.')
-//       return res.status(404).send('List not found')
-//     }
-
-//     if(bookIds && bookIds.length>0){
-//       const bookIdsObjectId = bookIds.map(bookId => mongoose.Types.ObjectId(bookId))
-//       list.books.pull(...bookIdsObjectId)
-//       await list.save()
-//       console.log("Selected Books Removed Successfully.")
-//     }
-    
-//     res.redirect(`/lists/${listId}`)
-
-//   } catch (error) {
-//     console.log(error)
-//   }
-// })
-
 router.delete('/delete-selected/:listId', async (req,res)=>{
   try {
     const {listId} = req.params
