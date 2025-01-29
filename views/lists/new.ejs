@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New List</title>
+    <link rel="stylesheet" href="/styles/list/new_list.css">
 </head>
 <body>
+    <nav><%- include('./../partials/_navbar.ejs') %></nav>
     <h1>New List</h1>
     <% if(list){%>
         <form action="/lists" method="POST">
             <label for="listName">List Name</label>
             <input value="<%= list.listName%>" type="text"  name="listName" id="listName">
-            <button type="submit">Add List</button>
+            <button class="button" type="submit">Add List</button>
         </form>
     <% } else{%>
     <form action="/lists" method="POST">
         <label for="listName">List Name</label>
         <input type="text"  name="listName" id="listName">
-        <button type="submit">Add List</button>
+        <button class="button" type="submit">Add List</button>
     </form>
     <%}%>
 </body>

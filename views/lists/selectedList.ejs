@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= list.listName %></title>
+  <link rel="stylesheet" href="/styles/list/selectedList.css">
 </head>
 <body>
-  <%- include('./../partials/_navbar.ejs') %>
-  <h1><%= list.listName %></h1>
-  
-  <form action="/lists/delete-selected/<%= list._id %>?_method=DELETE" method="POST"> 
-    <ol>
-      <% list.books.forEach(book => { %>
-        <li>
-          <%= book.bookName %> by <%= book.author %> (Status: <%= book.status %>)
-          <input type="checkbox" name="bookIds[]" value="<%= book._id %>"> 
-        </li>
-      <% }) %>
-    </ol>
-    <button type="submit">Delete Selected Books</button>
-  </form>
-  
-  <hr>
-  <h2>Books You May Like to Add</h2>
-  <form action="/lists/<%= list.listName %>/add-books" method="POST">
-    <ol>
-        <% books.filter(book => !list.books.some(b => b.equals(book._id))).forEach(book => { %>        <li>
-          <h3><%= book.bookName %></h3>
-          <p>Author: <%= book.author %></p>
-          <input type="checkbox" name="bookIds" value="<%= book._id %>">
-        </li>
-      <% }) %>
-    </ol>
-    <button type="submit">Add Selected Books</button>
-  </form>
+  <nav><%- include('./../partials/_navbar.ejs') %></nav>
 
-  <hr>
-  <form action="/lists/delete/<%= list._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete List</button>
-  </form>
+  <div class="container"> 
+    <h1><%= list.listName %></h1> 
+
+    <form action="/lists/delete-selected/<%= list._id %>?_method=DELETE" method="POST">
+      <div class="listName">
+        <h2>Selected Books</h2> 
+        <ol>
+          <% list.books.forEach(book => { %>
+            <li>
+              <%= book.bookName %> by <%= book.author %> (Status: <%= book.status %>)
+              <input type="checkbox" name="bookIds[]" value="<%= book._id %>"> 
+            </li>
+          <% }) %>
+        </ol>
+      </div>
+      <button class="button" type="submit">Delete Selected Books</button>
+    </form>
+
+    <hr>
+
+    <h2>Books You May Like to Add</h2>
+    <form action="/lists/<%= list.listName %>/add-books" method="POST">
+      <ol>
+        <% books.filter(book => !list.books.some(b => b.equals(book._id))).forEach(book => { %>
+          <li>
+            <h3><%= book.bookName %></h3>
+            <p>Author: <%= book.author %></p>
+            <input type="checkbox" name="bookIds" value="<%= book._id %>">
+          </li>
+        <% }) %>
+      </ol>
+      <button class="button" type="submit">Add Selected Books</button>
+    </form>
+
+    <hr>
+
+    <div class="actions"> 
+      <form action="/lists/delete/<%= list._id %>?_method=DELETE" method="POST">
+        <button class="button" type="submit">Delete List</button>
+      </form>
+      <a href="/lists/update/<%= list._id%>"><button class="button" type="submit">Update List</button></a>
+    </div>
+
+  </div>
+
 </body>
 </html>
