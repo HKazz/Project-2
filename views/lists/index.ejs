@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lists</title>
+    <link rel="stylesheet" href="/styles/list/list.css">
 
 </head>
 <body>    
-    <%- include('./../partials/_navbar.ejs') %>
+    <nav><%- include('./../partials/_navbar.ejs') %></nav>
     <h1>Your Lists</h1>
+    <div class="all-lists">
     <% lists.forEach(list => { %>
-        <div>
-            <ol><a href="/lists/<%=list.listName%>"><h3><%= list.listName %></h3></a></ol>
+        <div class="lists-container">
+            <div class="list-item">
+            <ol><a class="listNames" href="/lists/<%=list.listName%>"><h3><%= list.listName %></h3></a></ol>
+            </div>
         </div>
     <% })%>
-    <a href="/lists/new"><button type="submit">Create list</button></a>
+    </div>
+    <a href="/lists/new"><button class="create-list" type="submit">Create list</button></a>
 </body>
 </html>
