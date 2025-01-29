@@ -25,14 +25,6 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 
-
-
-
-
-
-
-
-
 // =======================
 // 3. CONNECTION TO DATABASE
 // =======================

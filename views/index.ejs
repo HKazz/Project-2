@@ -3,20 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Buddy</title>
+    <title>Page Turners</title>
+    <link rel="stylesheet" href="/styles/book/homepage.css">
   </head>
   <body>
-    <h1>Book Buddy</h1>
+    <img src="/images/logo.png" alt="Page Turners Logo" class="logo">
     <% if (user) { %>
-    <!-- Check if user exists -->
     <h2>Welcome, <%= user.username %></h2>
-    <a href="/books">Your Books</a>
-    <a href="/lists">Your Lists</a>
-    <a href="/auth/sign-out">Sign Out</a>
+    <div class="links">
+        <a href="/books">Your Books</a>
+        <a href="/lists">Your Lists</a>
+        <a href="/auth/sign-out">Sign Out</a>
+    </div>
     <% } else { %>
-    <p>A booklist tracker application.</p>
-    <a href="/auth/sign-up">Sign Up</a>
-    <a href="/auth/sign-in">Sign In</a>
+    <p>Sign in to make your reading lists!</p>
+    <div class="links">
+        <a href="/auth/sign-up">Sign Up</a>
+        <a href="/auth/sign-in">Sign In</a>
+    </div>
     <% } %>
-  </body>
+</body>
+
 </html>
