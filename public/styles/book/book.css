@@ -1,13 +1,110 @@
-body{
-    background-color: #F2E3D5;
-    color: #333333;
+* {
+  box-sizing: border-box;
 }
 
-.button{
-    background-color: #F4C95D;
-    border-radius: 10px;
+body {
+
+  background-color: #F2E3D5;
+  color: #333333;
+  font-family: system-ui, sans-serif;
+  margin: auto;
+  text-align: center;
 }
 
-.button:hover{
-    background-color: #8BA870;
+.book {
+  border: solid 2px black;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 60%;
+  margin: 0 auto 20px auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  background-color: #2C3E50;
+  margin-bottom: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: #F2E3D5;
+  font-size: 30px;
+}
+
+.button {
+
+  background-color: #F4C95D;
+  border-radius: 10px;
+  padding: 10px 16px;
+  border: 0;
+  color: #424141;
+  font-weight: 500;
+
+}
+
+.button:hover {
+  background-color: #8BA870;
+}
+
+.add-book {
+
+  background-color: #F4C95D;
+  border-radius: 10px;
+  padding: 10px 16px;
+  border: 0;
+  color: #424141;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.add-book:hover {
+  background-color: #8BA870;
+}
+
+.new-book {
+
+  background-color: #F4C95D;
+  border-radius: 10px;
+  padding: 10px 16px;
+  border: 0;
+  color: #424141;
+  font-weight: 500;
+  width: 90px;
+}
+
+.new-book:hover {
+  background-color: #8BA870;
+}
+
+.delete-book {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.book form {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
 }

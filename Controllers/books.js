@@ -52,6 +52,14 @@ router.put('/:id', async (req, res) => {
         res.redirect('/books')
     }
 })
-
+router.delete('/:id', async (req, res) => {
+    try {
+        await Books.findByIdAndDelete(req.params.id)
+        res.redirect('/books')
+    } catch (error) {
+        console.log("Error deleting book:", error)
+        res.redirect('/books')
+    }
+})
 
 module.exports = router
